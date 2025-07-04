@@ -1,0 +1,2 @@
+- [Synapse TI](https://synapseti.com):
+  - Cédric Paradis
