@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="RSVP_base" name="RSVP base">
+        <t t-call="web.frontend_layout">
+            <div class="o_event_rsvp_main_container">
+                <t t-set="event" t-value="registration.event_id" />
+                <div class="flex o_event_rsvp_content_container">
+                    <t t-out="0" />
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="RSVP_prompt" name="RSVP prompt">
+        <t t-call="event_rsvp.RSVP_base">
+            <t t-set="event" t-value="registration.event_id" />
+            <div class="text-center">
+                <h2>
+                    <small>Hello <t t-out="registration.name" />! </small>
+                </h2>
+                <div>
+                    <h3>You have registered to the following event:</h3>
+                    <div class="pt-2 pb-2">
+                        <span> Event name: <t t-out="event.name" />
+                        </span>
+                        <br />
+                        <span> Event start: <t t-out="event.date_begin" />
+                        </span>
+                        <br />
+                        <span> Organized by: <t t-out="event.organizer_id.name" />
+                        </span>
+                    </div>
+                </div>
+                <h3>Please confirm your presence using the buttons below.</h3>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <a t-attf-href="/event/rsvp/{{registration.id}}/confirm">
+                        <button class="o_event_select_attendee btn btn-primary mb16">
+                            <div class="mb16 mt16">I will be present</div>
+                        </button>
+                    </a>
+                </div>
+                <!-- <div class="col text-center mb16 mt16">
+                            <h4>
+                                <i>or</i>
+                            </h4>
+                        </div> -->
+                <div class="col text-center">
+                    <a t-attf-href="/event/rsvp/{{registration.id}}/cancel">
+                        <button class="o_event_select_attendee btn btn-secondary mb16">
+                            <div class="mb16 mt16">I will not be present</div>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>    

@@ -10,4 +10,9 @@
             </xpath>
         </field>
     </record>
+    <record id="rsvp_confirmation_view" model="ir.actions.client">
+        <field name="name">RSVP Confirmation</field>
+        <field name="tag">rsvp_confirmation</field>
+        <field name="target">fullscreen</field>
+    </record>
 </odoo>

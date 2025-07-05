@@ -10,7 +10,10 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": ["event"],
-    "data": [
-        "views/event_registration_views.xml",
-    ],
+    "data": ["views/event_registration_views.xml", "views/rsvp_confirmation.xml"],
+    "assets": {
+        "web.assets_frontend": [
+            "event_rsvp/static/src/event_rsvp.scss",
+        ],
+    },
 }
