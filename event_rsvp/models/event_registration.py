@@ -25,3 +25,6 @@ class EventRegistration(models.Model):
         import secrets
 
         return secrets.token_urlsafe(16)
+
+    def action_rsvp(self):
+        self.write({"state": "rsvp"})

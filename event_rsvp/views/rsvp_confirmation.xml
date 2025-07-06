@@ -35,7 +35,8 @@
             </div>
             <div class="row">
                 <div class="col text-center">
-                    <a t-attf-href="/event/rsvp/{{registration.id}}/confirm">
+                    <a
+                        t-attf-href="/event/rsvp/{{registration.id}}/confirm?access_token={{registration.access_token}}">
                         <button class="o_event_select_attendee btn btn-primary mb16">
                             <div class="mb16 mt16">I will be present</div>
                         </button>
@@ -47,12 +48,61 @@
                             </h4>
                         </div> -->
                 <div class="col text-center">
-                    <a t-attf-href="/event/rsvp/{{registration.id}}/cancel">
+                    <a
+                        t-attf-href="/event/rsvp/{{registration.id}}/cancel?access_token={{registration.access_token}}">
                         <button class="o_event_select_attendee btn btn-secondary mb16">
                             <div class="mb16 mt16">I will not be present</div>
                         </button>
                     </a>
                 </div>
+            </div>
+        </t>
+    </template>
+    <template id="RSVP_confirmation" name="RSVP confirmation">
+        <t t-call="event_rsvp.RSVP_base">
+            <t t-set="event" t-value="registration.event_id" />
+            <div class="text-center">
+                <h2>
+                    <small>Thank you <t t-out="registration.name" />! </small>
+                </h2>
+                <div>
+                    <h3>Your RSVP has been successfully recorded for the event:</h3>
+                    <div class="pt-2 pb-2">
+                        <span> Event name: <t t-out="event.name" />
+                        </span>
+                        <br />
+                        <span> Event start: <t t-out="event.date_begin" />
+                        </span>
+                        <br />
+                        <span> Organized by: <t t-out="event.organizer_id.name" />
+                        </span>
+                    </div>
+                </div>
+                <h3>We look forward to seeing you there!</h3>
+            </div>
+        </t>
+    </template>
+    <template id="RSVP_cancellation" name="RSVP cancelled">
+        <t t-call="event_rsvp.RSVP_base">
+            <t t-set="event" t-value="registration.event_id" />
+            <div class="text-center">
+                <h2>
+                    <small>Thank you <t t-out="registration.name" />! </small>
+                </h2>
+                <div>
+                    <h3>Your RSVP has been successfully cancelled for the event:</h3>
+                    <div class="pt-2 pb-2">
+                        <span> Event name: <t t-out="event.name" />
+                        </span>
+                        <br />
+                        <span> Event start: <t t-out="event.date_begin" />
+                        </span>
+                        <br />
+                        <span> Organized by: <t t-out="event.organizer_id.name" />
+                        </span>
+                    </div>
+                </div>
+                <h3>We hope to see you at future events!</h3>
             </div>
         </t>
     </template>
